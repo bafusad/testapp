@@ -27,4 +27,19 @@ class MainScreenUseCaseImpl(
     override suspend fun lazyLoadItems(lastItemId: String): List<Item> {
         return repository.loadItems(null, lastItemId)
     }
+
+    // Doesn't work with pagination
+    /*
+                    Outcome<Data<List<Item>>>
+    fun loadData(): Flow<List<Item>> = flow {
+        emit(cachingUseCase.getCache())
+
+        val remoteData = getDataFromApi()
+        save(remoteData)
+
+        emit(remoteData)
+    }.catch { e ->
+        emit(Outcome.Error())
+    }
+    */
 }

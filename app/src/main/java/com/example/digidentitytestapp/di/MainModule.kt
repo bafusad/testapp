@@ -20,7 +20,7 @@ import org.koin.dsl.module
 fun mainModule(appContext: Context): Module = module {
     factory { appContext }
     factory { get<Context>().getSharedPreferences("app_pref", Context.MODE_PRIVATE) }
-    factory { SecurityUtil() }
+    single { SecurityUtil }
     factory { ItemMapper() }
 
     factory<CatalogRepository> { CatalogRepositoryImpl(api = get(), mapper = get()) }

@@ -18,7 +18,7 @@ class MainViewModel(
 
     private val _uiState: MutableStateFlow<MainScreenState> =
         MutableStateFlow(MainScreenState())
-    val uiState: StateFlow<MainScreenState> = _uiState
+    val uiState: StateFlow<MainScreenState> = _uiState.asFlow()
 
     private val requestExceptionHandler = CoroutineExceptionHandler { context, throwable ->
         _uiState.update { state ->
@@ -65,7 +65,8 @@ class MainViewModel(
         (viewModelScope + requestExceptionHandler).launch {
             val items = useCase.getInitialBatch()
             val cells = items.map { MainCell.ListItem(it) }
-            _uiState.update {
+            _uiState.update { currentState ->
+                // currentState.copy()
                 MainScreenState(
                     cells = cells,
                     canLoadMore = items.isFullBatch(),

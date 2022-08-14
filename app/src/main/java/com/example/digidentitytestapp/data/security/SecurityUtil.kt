@@ -5,7 +5,8 @@ import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
-class SecurityUtil {
+// TODO: extract to interface
+object SecurityUtil {
 
     fun encrypt(target: String, secretKey: String, vector: String): String {
         val kb = Base64.decode(secretKey, Base64.NO_WRAP)

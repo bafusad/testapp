@@ -3,6 +3,7 @@ package com.example.digidentitytestapp.data.mapper
 import com.example.digidentitytestapp.data.entity.CatalogItem
 import com.example.digidentitytestapp.domain.entity.Item
 
+// TODO: extract to interface
 class ItemMapper {
 
     fun mapToDomain(catalogItem: CatalogItem): Item {

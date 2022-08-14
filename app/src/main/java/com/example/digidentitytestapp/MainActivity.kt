@@ -11,9 +11,12 @@ class MainActivity : AppCompatActivity() {
 
         println("MyLogTag activity on create")
         println("MyLogTag activity ${hashCode()}")
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container_view, MainFragment.newInstance())
-            .commit()
+        // check this when orientation change invoked, while details screen open.
+        if(savedInstanceState != null) { // handling recreate
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container_view, MainFragment.newInstance())
+                .commit()
+        }
     }
 }

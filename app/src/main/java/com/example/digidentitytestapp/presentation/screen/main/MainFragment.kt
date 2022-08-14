@@ -84,6 +84,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun onItemClick(item: Item) {
+        // TODO escape null requireActivity() or requireFragmentManager()
         with(activity) {
             this?.supportFragmentManager
                 ?.beginTransaction()

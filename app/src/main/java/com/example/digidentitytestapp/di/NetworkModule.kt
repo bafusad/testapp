@@ -29,5 +29,5 @@ fun networkModule(): Module = module {
             .build()
             .create(CatalogApi::class.java)
     }
-    factory { Gson() }
+    single { Gson() }
 }
